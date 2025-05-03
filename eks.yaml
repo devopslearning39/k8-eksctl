@@ -3,7 +3,7 @@ kind: ClusterConfig
 
 metadata:
   name: cluster-1
-  region: eu-east-1 
+  region: us-east-1
 
 managedNodeGroups:
   - name: spot
