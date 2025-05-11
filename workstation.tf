@@ -1,19 +1,19 @@
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source = "terraform-aws-modules/ec2-instance/aws"
 
   name = "workstation"
-# ami = data.aws_ami.centos8.id
-    ami = "ami-0b4f379183e5706b9"
-  instance_type          = "t2.micro"
-#   key_name               = "user1"
-#   monitoring             = true
+  # ami = data.aws_ami.centos8.id
+  ami           = "ami-0b4f379183e5706b9"
+  instance_type = "t2.micro"
+  #   key_name               = "user1"
+  #   monitoring             = true
   vpc_security_group_ids = [aws_security_group.allow_eksctl.id]
   subnet_id              = "subnet-058a7562114623eda"
-  user_data = file("workstation.sh")
+  user_data              = file("workstation.sh")
   tags = {
     Terraform   = "true"
     Environment = "dev"
-    }
+  }
 }
 
 resource "aws_security_group" "allow_eksctl" {
