@@ -40,7 +40,7 @@ resource "aws_security_group" "allow_eksctl" {
 }
 
 data "aws_ami" "centos8"{
-    owners = ["366494314356"]
+    owners = ["973714476881"]
     most_recent      = true
 
     filter {
