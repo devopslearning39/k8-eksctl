@@ -66,3 +66,20 @@ VALIDATE $? "eksctl installation"
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 VALIDATE $? "kubens installation"
+
+#helm install 
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+VALIDATE $? "helm installation"
+
+# aws ebs csi driver install
+helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+helm repo update
+helm upgrade --install aws-ebs-csi-driver \
+    --namespace kube-system \
+    aws-ebs-csi-driver/aws-ebs-csi-driver
+VALIDATE $? "aws ebs csi driver installation"
+
+echo "Jella all dependencies installed like 'yum utils, docker, kubectl, kubens, helm, aws ebs csi driver..'"
