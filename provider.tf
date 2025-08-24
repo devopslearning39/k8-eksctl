@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "praveen-k8-practice"
+    bucket = "praveen-k8s-practice"
     key    = "eksctl"
     region = "us-east-1"
     dynamodb_table = "jp-k8-locking"
